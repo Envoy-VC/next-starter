@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 
 import { type QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
@@ -8,9 +8,9 @@ import {
   loggerLink,
 } from '@trpc/client';
 import { createTRPCReact } from '@trpc/react-query';
-import { type inferRouterInputs, type inferRouterOutputs } from '@trpc/server';
+import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 import { SuperJSON } from 'superjson';
-import { type AppRouter } from '~/server/api/root';
+import type { AppRouter } from '~/server/api/root';
 
 import { createQueryClient } from './query-client';
 
@@ -21,7 +21,7 @@ const getQueryClient = () => {
     return createQueryClient();
   }
   // Browser: use singleton pattern to keep the same query client
-  return (clientQueryClientSingleton ??= createQueryClient());
+  return clientQueryClientSingleton ?? createQueryClient();
 };
 
 export const api = createTRPCReact<AppRouter>();
@@ -40,7 +40,7 @@ export type RouterInputs = inferRouterInputs<AppRouter>;
  */
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
 
-export const TRPCReactProvider = (props: { children: React.ReactNode }) => {
+export const TRPCReactProvider = (props: { children: ReactNode }) => {
   const queryClient = getQueryClient();
 
   const trpcClient = useMemo(
@@ -76,7 +76,13 @@ export const TRPCReactProvider = (props: { children: React.ReactNode }) => {
 };
 
 function getBaseUrl() {
-  if (typeof window !== 'undefined') return window.location.origin;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (typeof window !== 'undefined') {
+    return window.location.origin;
+  }
+
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+
   return `http://localhost:${process.env.PORT ?? '3000'}`;
 }

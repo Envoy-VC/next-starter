@@ -1,6 +1,8 @@
 import { GeistSans } from 'geist/font/sans';
-import { type Metadata } from 'next';
+import type { Metadata } from 'next';
 import { TRPCReactProvider } from '~/trpc/react';
+
+import type { ReactNode } from 'react';
 
 import '../styles/globals.css';
 
@@ -10,7 +12,7 @@ export const metadata: Metadata = {
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
-const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
+const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
   return (
     <html className={GeistSans.variable} lang='en'>
       <body>
