@@ -4,7 +4,7 @@ This is a accompanying starter kit that goes with [Turbo Starter](https://github
 
 # Features
 
-- 📦 Packages are managed with [pnpm](https://pnpm.io) 
+- 🛒 Packages are managed with [pnpm](https://pnpm.io) 
 - 🌎 Uses `@biome/biomejs` for code formatting and linting.
 - ✅ Uses a strict opinionated linting setup using [klarity](https://github.com/Envoy-VC/klarity).
 - 🎨 Tailwind CSS v4 Support
