@@ -7,7 +7,6 @@ export const env = createEnv({
   },
   client: {},
   experimental__runtimeEnv: {},
-  // eslint-disable-next-line no-undef -- we know that process is defined
   skipValidation: Boolean(process.env.SKIP_ENV_VALIDATION),
   emptyStringAsUndefined: true,
 });

@@ -12,7 +12,10 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
   return (
-    <html className={GeistSans.variable} lang='en'>
+    <html
+      className={GeistSans.variable}
+      lang='en'
+    >
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
